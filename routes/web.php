@@ -6,20 +6,19 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+Route::get('/', [ProductController::class, 'index']);
 Route::resource('products', ProductController::class);
 
-Route::get('/', function () {
-    $productController = new ProductController();
-    $products = $productController->index();
+// Route::get('/', function () {
 
-    return Inertia::render('Home', [
-        'products' => $products,
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+//     return Inertia::render('Home', [
+//         'products' => $products,
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
