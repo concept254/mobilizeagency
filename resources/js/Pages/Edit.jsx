@@ -19,6 +19,7 @@ export default function Create ({product}){
     return(
         <>
             <h1 className="title">Update product</h1>
+            
             <div className="w-1/2 mx-auto">
                 <form onSubmit={submit}>
                     <label>Name</label>

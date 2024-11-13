@@ -29,6 +29,7 @@ export default function Create (){
             </Head>
 
             <h1 className="title">Create a new product</h1>
+            
             <div className="w-1/2 mx-auto">
                 <form onSubmit={submit}>
                     <label>Name</label>

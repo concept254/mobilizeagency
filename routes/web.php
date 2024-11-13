@@ -10,6 +10,7 @@ Route::resource('products', ProductController::class);
 
 Route::get('/', function () {
     return Inertia::render('Home', [
+        'products' => [$products, ProductController::class],
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
