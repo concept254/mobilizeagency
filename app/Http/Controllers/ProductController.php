@@ -19,11 +19,11 @@ class ProductController extends Controller
     }
 
     // list all products
-    public function products()
+    public function shop()
     {
         $products = Product::latest()->paginate(6);
         
-        return inertia('Products', ['products' => $products]);
+        return inertia('Shop', ['products' => $products]);
     }
 
     /**

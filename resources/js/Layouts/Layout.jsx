@@ -16,7 +16,7 @@ export default function Layout({ children }) {
                 <div className="header-wrapper">
                     <div className="top-header">
                         <Link href="/" className="nav-link">Home</Link>
-                        <Link href="/products" className="nav-link">Products</Link>
+                        <Link href="/shop" className="nav-link">Products</Link>
                         <Link href="/products/create" className="nav-link">Create</Link>
                         <Link href="/register" className="nav-link">Register</Link>
                         <Link href="/login" className="nav-link">Login</Link>
