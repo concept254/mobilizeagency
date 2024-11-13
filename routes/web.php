@@ -9,10 +9,8 @@ use Inertia\Inertia;
 Route::resource('products', ProductController::class);
 
 Route::get('/', function () {
-    $products = ProductController::class;
-    var_dump($products);
     return Inertia::render('Home', [
-        'products' => [$products],
+        'products' => [ProductController::class, 'index'],
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
