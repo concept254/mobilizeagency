@@ -4,6 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Http\Requests\ProfileUpdateRequest;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Inertia\Inertia;
+use Inertia\Response;
+
+use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Application;
 
 class ProductController extends Controller
 {
@@ -13,9 +23,18 @@ class ProductController extends Controller
     
     public function index()
     {
-        $products = Product::latest()->paginate(6);
+        $products = Product::latest()->paginate(6)->toArray();
         
-        return inertia('Home', ['products' => $products]);
+        return Inertia::render('Home', [
+            'products' => $products,
+            'auth' => [
+                'user' => auth()->user(),
+            ],
+            'canLogin' => Route::has('login'), 
+            'canRegister' => Route::has('register'),
+            'laravelVersion' => Application::VERSION,
+            'phpVersion' => PHP_VERSION,
+        ]);
     }
 
     // list all products
