@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class ProductController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the resource on the home page
      */
     
     public function index()
@@ -16,6 +16,14 @@ class ProductController extends Controller
         $products = Product::latest()->paginate(6);
         
         return inertia('Home', ['products' => $products]);
+    }
+
+    // list all products
+    public function products()
+    {
+        $products = Product::latest()->paginate(6);
+        
+        return inertia('Products', ['products' => $products]);
     }
 
     /**

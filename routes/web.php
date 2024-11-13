@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', [ProductController::class, 'index']);
-Route::resource('products', ProductController::class);
+Route::get('/products', [ProductController::class, 'products']);
+// Route::resource('products', ProductController::class);
 
 // Route::get('/', function () {
 
