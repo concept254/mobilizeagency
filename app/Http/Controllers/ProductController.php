@@ -32,6 +32,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
 
+        // validate form fields before storing
         $fields = $request->validate([
             'name' => ['required'],
             'price' => 'required|integer',
@@ -40,6 +41,7 @@ class ProductController extends Controller
             'description' => ['required']
         ]);
 
+        // grab image name and move file to public/images folder
         $imageName = time().'.'.$request->image->extension();
         $request->image->move(public_path("images"), $imageName);
 
@@ -47,6 +49,7 @@ class ProductController extends Controller
 
         Product::create($fields);
 
+        // redirect and show flas message
         return redirect('/products')->with(
             'success', 'The product was created successfully!',
         );
@@ -74,7 +77,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        
+        // validate form fields
         $fields = $request->validate([
             'name' => 'required',
             'price' => 'required|integer',
@@ -82,16 +85,8 @@ class ProductController extends Controller
             'description' => 'required',
             "image" => ''
         ]);
-        
 
-        // $imageName = time().'.'.$request->image->extension();
-        // $request->image->move(public_path("images"), $imageName);
-
-        // $fields['image'] = $imageName;
-        
-
-        // dd($fields);
-
+        // update the product
         $product->update($fields);
 
         return redirect('/products')->with(
@@ -104,6 +99,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
+        // delete and return with flash message
         $product->delete();
 
         return redirect('/products')->with(
