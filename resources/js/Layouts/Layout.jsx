@@ -15,11 +15,17 @@ export default function Layout({ children }) {
             <header>
                 <div className="header-wrapper">
                     <div className="top-header">
-                        <Link href="/" className="nav-link">Home</Link>
-                        <Link href="/shop" className="nav-link">Products</Link>
-                        <Link href="/products/create" className="nav-link">Create</Link>
-                        <Link href="/register" className="nav-link">Register</Link>
-                        <Link href="/login" className="nav-link">Login</Link>
+                        <div className="menu-left">
+                            <Link href="/" className="nav-link">Home</Link>
+                        </div>
+                        <div class="status-msg"></div>
+                        <div className="menu-right">
+                            <Link href="/shop" className="small-link">Products</Link>
+                            <Link href="/products/create" className="small-link">Create</Link>
+                            <Link href="/register" className="small-link">Register</Link>
+                            <Link href="/login" className="small-link">Login</Link>
+                        </div>
+
                     </div>
                 </div>
             </header>
