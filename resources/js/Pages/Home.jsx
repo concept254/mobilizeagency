@@ -4,6 +4,8 @@ import {useState, useEffect } from "react";
 
 export default function Home({ products }) {
 
+    console.log(products);
+
     const {flash} = usePage().props;
     const [flashMsg, setFlashMsg] = useState(flash.message);
     const [flashSuccess, setFlashSuccess] = useState(flash.success);
