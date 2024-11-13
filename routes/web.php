@@ -10,6 +10,7 @@ Route::resource('products', ProductController::class);
 
 Route::get('/', function () {
     $products = ProductController::class;
+    var_dump($products);
     return Inertia::render('Home', [
         'products' => [$products],
         'canLogin' => Route::has('login'),
